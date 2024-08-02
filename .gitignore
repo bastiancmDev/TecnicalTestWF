@@ -1,4 +1,4 @@
-# Ignore all files and directories inside MyWinFormsApp
+# Ignore all files and directories inside WFtest
 /WFtest/bin/
 /WFtest/obj/
 /WFtest/Debug/
@@ -26,5 +26,12 @@ WFtest/*.sln.docstates
 # ReSharper project files
 /WFtest/_ReSharper*/
 
+/# Rider project files
+/WFtest/.idea/
+
 # Visual Studio package files
 /WFtest/*.vsix
+
+# DLLs generated during build
+/WFtest/bin/*.dll
+/WFtest/obj/*.dll
