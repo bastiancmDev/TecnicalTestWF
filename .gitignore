@@ -1,0 +1,30 @@
+# Ignore all files and directories inside MyWinFormsApp
+/WFtest/bin/
+/WFtest/obj/
+/WFtest/Debug/
+/WFtest/Release/
+
+# Visual Studio configuration files
+/WFtest/.vs/
+WFtest/*.user
+WFtest/*.suo
+WFtest/*.userosscache
+WFtest/*.sln.docstates
+
+# Automatically generated files
+/WFtest/*.log
+/WFtest/*.tlog
+/WFtest/*.tmp
+/WFtest/*.temp
+/WFtest/*.bak
+
+# NuGet files
+/WFtest/*.nupkg
+# Package directories
+/WFtest/packages/
+
+# ReSharper project files
+/WFtest/_ReSharper*/
+
+# Visual Studio package files
+/WFtest/*.vsix
