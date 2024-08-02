@@ -1,0 +1,16 @@
+F:\tecnical test\WFtest\WFtest\obj\Debug\net8.0-windows\WFtest.Form1.resources
+F:\tecnical test\WFtest\WFtest\obj\Debug\net8.0-windows\WFtest.csproj.GenerateResource.cache
+F:\tecnical test\WFtest\WFtest\obj\Debug\net8.0-windows\WFtest.GeneratedMSBuildEditorConfig.editorconfig
+F:\tecnical test\WFtest\WFtest\obj\Debug\net8.0-windows\WFtest.AssemblyInfoInputs.cache
+F:\tecnical test\WFtest\WFtest\obj\Debug\net8.0-windows\WFtest.AssemblyInfo.cs
+F:\tecnical test\WFtest\WFtest\obj\Debug\net8.0-windows\WFtest.csproj.CoreCompileInputs.cache
+F:\tecnical test\WFtest\WFtest\bin\Debug\net8.0-windows\WFtest.exe
+F:\tecnical test\WFtest\WFtest\bin\Debug\net8.0-windows\WFtest.deps.json
+F:\tecnical test\WFtest\WFtest\bin\Debug\net8.0-windows\WFtest.runtimeconfig.json
+F:\tecnical test\WFtest\WFtest\bin\Debug\net8.0-windows\WFtest.dll
+F:\tecnical test\WFtest\WFtest\bin\Debug\net8.0-windows\WFtest.pdb
+F:\tecnical test\WFtest\WFtest\obj\Debug\net8.0-windows\WFtest.dll
+F:\tecnical test\WFtest\WFtest\obj\Debug\net8.0-windows\refint\WFtest.dll
+F:\tecnical test\WFtest\WFtest\obj\Debug\net8.0-windows\WFtest.pdb
+F:\tecnical test\WFtest\WFtest\obj\Debug\net8.0-windows\WFtest.genruntimeconfig.cache
+F:\tecnical test\WFtest\WFtest\obj\Debug\net8.0-windows\ref\WFtest.dll

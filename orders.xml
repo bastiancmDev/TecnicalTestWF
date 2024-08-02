@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Orders>
+  <Order>
+    <OrderNumber>123</OrderNumber>
+    <Date>2023-07-31T00:00:00</Date>
+    <ItemCount>2</ItemCount>
+    <TotalPrice>100.00</TotalPrice>
+    <CustomerName>John Doe</CustomerName>
+    <Products>
+      <Product>
+        <OrderNumber>123</OrderNumber>
+        <ProductName>Product1</ProductName>
+        <Price>50.003</Price>
+        <Quantity>1</Quantity>
+        <Comment>First comment</Comment>
+      </Product>
+      <Product>
+        <OrderNumber>123</OrderNumber>
+        <ProductName>Product23</ProductName>
+        <Price>50.00</Price>
+        <Quantity>1</Quantity>
+        <Comment>Second comment</Comment>
+      </Product>
+      <Product>
+        <OrderNumber>123</OrderNumber>
+        <ProductName>sdfsdf</ProductName>
+        <Price>774923</Price>
+        <Quantity>2</Quantity>
+        <Comment>sdfsadfasdfs</Comment>
+      </Product>
+    </Products>
+  </Order>
+</Orders>
