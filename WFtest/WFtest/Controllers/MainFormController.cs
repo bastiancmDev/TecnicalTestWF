@@ -17,6 +17,9 @@ namespace WFtest.Controllers
         private List<Order> orders;
         private List<Product> currentProducts;
         private string currentFilePath;
+        private string previousComment;
+        private decimal previousPrice;
+        private DataGridViewRow currentRow;
 
         public MainFormController(Form1 view, IDataService dataService)
         {
@@ -36,6 +39,8 @@ namespace WFtest.Controllers
             view.NextButtonProducts.Click += (sender, e) => NextButtonProducts_Click();
             view.SaveButton.Click += (sender, e) => SaveButton_Click();
             view.OrdersGridView.SelectionChanged += OrdersGridView_SelectionChanged;
+            view.ProductsGridView.CellValueChanged += ProductsGridView_CellValueChanged;
+            view.ProductsGridView.CellBeginEdit += ProductsGridView_CellBeginEdit;
             view.ProductsGridView.CellEndEdit += ProductsGridView_CellEndEdit;
         }
 
@@ -223,34 +228,7 @@ namespace WFtest.Controllers
                 view.ProductsGridView.DataSource = productsList;
             }
         }
-
-        private void ProductsGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex == view.ProductsGridView.Rows.Count - 1)
-            {
-                var newProductRow = view.ProductsGridView.Rows[e.RowIndex];
-                if (!string.IsNullOrWhiteSpace(newProductRow.Cells["ProductName"].Value?.ToString()))
-                {
-                    // Add the new product
-                    var selectedOrderNumber = view.OrdersGridView.SelectedRows[0].Cells["OrderNumber"].Value.ToString();
-                    var selectedOrder = orders.FirstOrDefault(o => o.OrderNumber == selectedOrderNumber);
-                    if (selectedOrder != null)
-                    {
-                        var newProduct = new Product
-                        {
-                            OrderNumber = selectedOrderNumber,
-                            ProductName = newProductRow.Cells["ProductName"].Value.ToString(),
-                            Price = decimal.Parse(newProductRow.Cells["Price"].Value.ToString()),
-                            Quantity = int.Parse(newProductRow.Cells["Quantity"].Value.ToString()),
-                            Comment = newProductRow.Cells["Comment"].Value.ToString()
-                        };
-                        selectedOrder.Products.Add(newProduct);
-                        LoadOrderDetails(selectedOrderNumber);
-                    }
-                }
-            }
-        }
-
+       
         private void SaveButton_Click()
         {
             if (view.OrdersGridView.SelectedRows.Count == 0)
@@ -266,7 +244,6 @@ namespace WFtest.Controllers
                 var updatedProducts = new List<Product>();
                 foreach (DataGridViewRow row in view.ProductsGridView.Rows)
                 {
-                    // Verificar si la celda es nula antes de intentar acceder a su valor
                     if (row.Cells["ProductName"].Value != null &&
                         row.Cells["Price"].Value != null &&
                         row.Cells["Quantity"].Value != null &&
@@ -295,5 +272,74 @@ namespace WFtest.Controllers
         }
 
 
+        private void ProductsGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            // Verificar si la columna modificada es la de Precio
+            if (e.ColumnIndex == view.ProductsGridView.Columns["Price"].Index)
+            {
+                var row = view.ProductsGridView.Rows[e.RowIndex];
+                var priceCell = row.Cells["Price"];
+                var commentCell = row.Cells["Comment"];
+
+                // Cambiar el color de fondo del comentario para indicar que se necesita una actualización
+                if (priceCell.Style.BackColor != System.Drawing.Color.Yellow)
+                {
+                    commentCell.Style.BackColor = System.Drawing.Color.Yellow;
+                }
+                else
+                {
+                    commentCell.Style.BackColor = System.Drawing.Color.White;
+                }
+
+                // Mover el enfoque a la celda de comentario
+                view.ProductsGridView.CurrentCell = commentCell;
+            }
+        }
+
+        private void ProductsGridView_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            if (e.ColumnIndex == view.ProductsGridView.Columns["Price"].Index)
+            {
+                var row = view.ProductsGridView.Rows[e.RowIndex];
+                previousPrice = decimal.Parse(row.Cells["Price"].Value?.ToString() ?? "0");
+            }
+            else if(e.ColumnIndex == view.ProductsGridView.Columns["Comment"].Index)
+            {
+                currentRow = null;
+                var row = view.ProductsGridView.Rows[e.RowIndex];
+                previousComment  = row.Cells["Comment"].Value?.ToString();
+            }          
+        }
+
+        private void ProductsGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == view.ProductsGridView.Columns["Price"].Index)
+            {
+                var row = view.ProductsGridView.Rows[e.RowIndex];
+                var priceCell = row.Cells["Price"];
+                var commentCell = row.Cells["Comment"];
+
+                // Si el comentario no es modificado, revertir el precio a su valor anterior
+                if (priceCell.Value != null && decimal.TryParse(priceCell.Value.ToString(), out var newPrice) &&
+                    currentRow == null || string.IsNullOrWhiteSpace(commentCell.Value.ToString()))
+                {
+                    priceCell.Value = previousPrice;
+                    commentCell.Style.BackColor = System.Drawing.Color.Yellow;
+                    MessageBox.Show("Debe proporcionar un comentario si modifica el precio.");
+                    view.ProductsGridView.CurrentCell = commentCell; // Mover el foco al comentario
+                }
+                else
+                {
+                    commentCell.Style.BackColor = System.Drawing.Color.White;
+                }
+            }else if (e.ColumnIndex == view.ProductsGridView.Columns["Comment"].Index)
+            {
+                var row = view.ProductsGridView.Rows[e.RowIndex];
+                if (previousComment != row.Cells["Comment"].Value?.ToString())
+                {
+                    currentRow = view.ProductsGridView.Rows[e.RowIndex];
+                }
+            }
+        }
     }
 }
