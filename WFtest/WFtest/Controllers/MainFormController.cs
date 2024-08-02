@@ -326,7 +326,6 @@ namespace WFtest.Controllers
                     priceCell.Value = previousPrice;
                     commentCell.Style.BackColor = System.Drawing.Color.Yellow;
                     MessageBox.Show("Debe proporcionar un comentario si modifica el precio.");
-                    view.ProductsGridView.CurrentCell = commentCell; // Mover el foco al comentario
                 }
                 else
                 {

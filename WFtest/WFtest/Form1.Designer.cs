@@ -58,15 +58,15 @@
             ordersGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             ordersGridView.Location = new Point(3, 54);
             ordersGridView.Name = "ordersGridView";
-            ordersGridView.Size = new Size(470, 267);
+            ordersGridView.Size = new Size(527, 267);
             ordersGridView.TabIndex = 1;
             // 
             // productsGridView
             // 
             productsGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            productsGridView.Location = new Point(518, 54);
+            productsGridView.Location = new Point(617, 54);
             productsGridView.Name = "productsGridView";
-            productsGridView.Size = new Size(470, 267);
+            productsGridView.Size = new Size(532, 267);
             productsGridView.TabIndex = 2;
             // 
             // searchOrdersTextBox
@@ -105,7 +105,7 @@
             // 
             // previousProductsButton
             // 
-            previousProductsButton.Location = new Point(909, 327);
+            previousProductsButton.Location = new Point(1008, 327);
             previousProductsButton.Name = "previousProductsButton";
             previousProductsButton.Size = new Size(75, 23);
             previousProductsButton.TabIndex = 10;
@@ -114,7 +114,7 @@
             // 
             // nextButtonProducts
             // 
-            nextButtonProducts.Location = new Point(828, 327);
+            nextButtonProducts.Location = new Point(927, 327);
             nextButtonProducts.Name = "nextButtonProducts";
             nextButtonProducts.Size = new Size(75, 23);
             nextButtonProducts.TabIndex = 9;
@@ -123,7 +123,7 @@
             // 
             // searchProductsButton
             // 
-            searchProductsButton.Location = new Point(747, 327);
+            searchProductsButton.Location = new Point(846, 327);
             searchProductsButton.Name = "searchProductsButton";
             searchProductsButton.Size = new Size(75, 23);
             searchProductsButton.TabIndex = 8;
@@ -132,14 +132,14 @@
             // 
             // searchProductsTextBox
             // 
-            searchProductsTextBox.Location = new Point(518, 327);
+            searchProductsTextBox.Location = new Point(617, 327);
             searchProductsTextBox.Name = "searchProductsTextBox";
             searchProductsTextBox.Size = new Size(223, 23);
             searchProductsTextBox.TabIndex = 7;
             // 
             // saveButton
             // 
-            saveButton.Location = new Point(455, 396);
+            saveButton.Location = new Point(537, 396);
             saveButton.Name = "saveButton";
             saveButton.Size = new Size(75, 23);
             saveButton.TabIndex = 11;
@@ -150,7 +150,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1006, 431);
+            ClientSize = new Size(1212, 431);
             Controls.Add(saveButton);
             Controls.Add(previousProductsButton);
             Controls.Add(nextButtonProducts);
